@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title><![CDATA[Codeforces Round &#35;531 (Div. 3)]]></title>
+    <url>%2F%E9%A2%98%E8%A7%A3%2FCodeforces-Round-531-Div-3%2F</url>
+    <content type="text"><![CDATA[Codeforces Round #531 (Div. 3) D题 咕 咕咕 咕咕咕 123456789#include &lt;iostream&gt;#include &lt;cstdio&gt;using namespace std;int main(void) &#123; cout &lt;&lt; "发出了鸽子的声音.jpg"; return 0;&#125; 后面补。]]></content>
+      <categories>
+        <category>题解</category>
+      </categories>
+      <tags>
+        <tag>Codeforces</tag>
+      </tags>
+  </entry>
+</search>
