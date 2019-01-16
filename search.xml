@@ -3,7 +3,7 @@
   <entry>
     <title><![CDATA[Codeforces Round &#35;531 (Div. 3)]]></title>
     <url>%2F%E9%A2%98%E8%A7%A3%2FCodeforces-Round-531-Div-3%2F</url>
-    <content type="text"><![CDATA[Codeforces Round #531 (Div. 3) D题 咕 咕咕 咕咕咕123456789#include &lt;iostream&gt;#include &lt;cstdio&gt;using namespace std;int main(void) &#123; cout &lt;&lt; "发出了鸽子的声音.jpg"; return 0;&#125; 后面补。]]></content>
+    <content type="text"><![CDATA[Codeforces Round #531 (Div. 3) D题 咕 咕咕 咕咕咕 123456789#include &lt;iostream&gt;#include &lt;cstdio&gt;using namespace std;int main(void) &#123; cout &lt;&lt; "发出了鸽子的声音.jpg"; return 0;&#125; 后面补。 简单记录一下这个写得很丑陋的D题，顺便习惯下如何错误的写题解 题目链接： &emsp;&emsp;http://codeforces.com/contest/1102/problem/D 题目大意： &emsp;&emsp;给定一个长度为 n（保证 n 为 3 的倍数）的串，并且只含有0,1,2 3 种数字，让你替换某些数字，使得新得到的串的0,1,2的数量相同，要求替换次数最少，并在此要求下要求字典序最小。 题目思路： &emsp;&emsp;题目数据不算大，可以直接暴力模拟。之前比赛写的太丑陋了，看看正解怎么写的，学习下。 12345678910111213141516171819202122232425262728#include &lt;bits/stdc++.h&gt;using namespace std;int n, m, cnt[3], val[3];string s;int main(void) &#123; cin &gt;&gt; n &gt;&gt; s; m = n / 3; for (int i = 0; i &lt; n; i++) cnt[s[i] - '0']++; for (int i = 0; i &lt; 3; i++) val[i] = cnt[i]; for (int i = 0; i &lt; n; i++) &#123; val[s[i] - '0']--; if (cnt[s[i] - '0'] &gt; m) for (int j = 0; j &lt; 3; j++) if (cnt[j] &lt; m) &#123; if (j &gt; s[i] - '0' &amp;&amp; val[s[i] - '0'] &gt;= cnt[s[i] - '0'] - m) break; cnt[s[i] - '0']--; s[i] = char(j + '0'); cnt[j]++; break; &#125; &#125; cout &lt;&lt; s &lt;&lt; '\n'; return 0;&#125;]]></content>
       <categories>
         <category>题解</category>
       </categories>
