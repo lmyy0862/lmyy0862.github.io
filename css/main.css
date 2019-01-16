@@ -1841,7 +1841,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #2a95e7;
+  background: #6bbdd0;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -2929,6 +2929,11 @@ hr {
   padding: 25px;
   -webkit-box-shadow: 0 0 5px rgba(202,203,203,0.5);
   -moz-box-shadow: 0 0 5px rgba(202,203,204,0.5);
+}
+.highlight {
+  tab-size: 4;
+  -moz-tab-size: 4;
+  -o-tab-size: 4;
 }
 * {
   cursor: url("/images/2.ico"), auto !important;
