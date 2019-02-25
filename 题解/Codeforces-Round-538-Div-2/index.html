@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT">
+  <meta name="keywords" content="Codeforces,数学,">
 
 
 
@@ -79,13 +79,18 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="Blog">
-<meta property="og:url" content="http://yoursite.com/index.html">
+<meta name="description" content="Codeforces Round #538 (Div. 2) C">
+<meta name="keywords" content="Codeforces,数学">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Codeforces Round &amp;#35;538 (Div. 2)">
+<meta property="og:url" content="http://yoursite.com/题解/Codeforces-Round-538-Div-2/index.html">
 <meta property="og:site_name" content="Blog">
+<meta property="og:description" content="Codeforces Round #538 (Div. 2) C">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-02-25T15:53:35.545Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Blog">
+<meta name="twitter:title" content="Codeforces Round &amp;#35;538 (Div. 2)">
+<meta name="twitter:description" content="Codeforces Round #538 (Div. 2) C">
 
 
 
@@ -115,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/">
+  <link rel="canonical" href="http://yoursite.com/题解/Codeforces-Round-538-Div-2/">
 
 
 
 
 
-  <title>Blog</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  <title>Codeforces Round &#35;538 (Div. 2) | Blog</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   
 
 
@@ -140,8 +145,7 @@
     
   
 
-  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left 
-  page-home">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
@@ -266,9 +270,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
 
   
 
@@ -298,9 +302,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/题解/Codeforces-Round-538-Div-2/" itemprop="url">Codeforces Round &#35;538 (Div. 2)</a></h1>
+          <h1 class="post-title" itemprop="name headline">Codeforces Round &#35;538 (Div. 2)</h1>
         
 
         <div class="post-meta">
@@ -413,16 +415,11 @@
       
 
       
-        
-          <h2 id="Codeforces-Round-538-Div-2-C"><a href="#Codeforces-Round-538-Div-2-C" class="headerlink" title="Codeforces Round #538 (Div. 2) C"></a>Codeforces Round #538 (Div. 2) C</h2>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/题解/Codeforces-Round-538-Div-2/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
+        <h2 id="Codeforces-Round-538-Div-2-C"><a href="#Codeforces-Round-538-Div-2-C" class="headerlink" title="Codeforces Round #538 (Div. 2) C"></a>Codeforces Round #538 (Div. 2) C</h2><a id="more"></a>
+<p>C题：</p>
+<p>题目链接:<br>    &emsp;&emsp;<a href="https://codeforces.com/contest/1114/problem/C" target="_blank" rel="noopener">https://codeforces.com/contest/1114/problem/C</a><br>题目大意:<br>    &emsp;&emsp;给定N, b,求 ${N!}$ 在 ${b}$ 进制下末尾有多少个0<br>题目思路:<br>    &emsp;&emsp;本题思路从10进制类比入手会较好理解。<br>    &emsp;&emsp;首先对于一个10进制数，末尾有多少个0，我们可以直接肉眼看出（<del>废话</del>），但是我们可以换个角度来理解这个结果。<br>    &emsp;&emsp;由于${10=2*5}$所以实际上对于任意整数N(暂且不说 N!的情况)，我们可以认为N可以被若干个2和5所整除。<br>    &emsp;&emsp;例如${N = 20,   N = 2 * 2 * 5}$ 因为2出现了2次，5出现了1次，所以仅能组成1个10，那么我们可以得知末尾只能有一个0。<br>    &emsp;&emsp;所以我们不难得出第一个结论：${N!}$在 ${b}$ 进制下末尾有多少个0，取决于${N!}$ 中存在多少个 ${b}$ 中出现最少次数的质因数，<br>    &emsp;&emsp;即:<br>    &emsp;&emsp;${b=\prod_{i=1}^m p_i^{c_i}}$ ${ans = min \{  p_i |min\{c_i   | i \leq m \} , i  \leq  m\} }$,因此我们可以考虑打素数表，算出ans。</p>
+<p>​    &emsp;&emsp;第二个问题：如何计算${N !}$末尾有多少个0，我们已经算出来了ans(即最少出现次数的质因数，因此我们只要计算它的贡献为多少，就能解决这个问题。<br>    &emsp;&emsp;举个例子：${50!}$ 在 ${10}$ 进制下，5在${5,10,15,20,25,30,35,40,45,50}$提供了一次贡献，但是因为${25,50}$本身拥有2个5，所以我们可以考虑倍增成25，再次计算贡献，即最后的出现次数应该为5与25的贡献之和。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;map&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cmath&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn = <span class="number">1e6</span> + <span class="number">7</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">long</span> <span class="keyword">long</span> prime[maxn];</span><br><span class="line"><span class="built_in">map</span>&lt;<span class="keyword">long</span> <span class="keyword">long</span>, <span class="keyword">long</span> <span class="keyword">long</span>&gt; ind, cnt;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">long</span> <span class="keyword">long</span> <span class="title">getcnt</span><span class="params">(<span class="keyword">long</span> <span class="keyword">long</span> p, <span class="keyword">long</span> <span class="keyword">long</span> x)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">long</span> <span class="keyword">long</span> res = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">while</span> (x) &#123;</span><br><span class="line">		res += x / p;</span><br><span class="line">		x /= p;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="keyword">long</span> <span class="keyword">long</span> n, m;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">2</span>; i &lt;= maxn; i++) &#123;</span><br><span class="line">		<span class="keyword">if</span> (!prime[i]) &#123;</span><br><span class="line">			prime[++prime[<span class="number">0</span>]] = i;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= prime[<span class="number">0</span>] &amp;&amp; prime[j] &lt;= maxn / i; j++) &#123;</span><br><span class="line">			prime[prime[j] * i] = <span class="number">1</span>;</span><br><span class="line">			<span class="keyword">if</span> (i % prime[j] == <span class="number">0</span>) &#123;</span><br><span class="line">				<span class="keyword">break</span>;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">cin</span> &gt;&gt; n &gt;&gt; m;</span><br><span class="line">	<span class="keyword">long</span> <span class="keyword">long</span> mm = m;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">long</span> <span class="keyword">long</span> i = <span class="number">1</span>; <span class="built_in">sqrt</span>(m) &gt;= prime[i]; i++) &#123;</span><br><span class="line">		<span class="keyword">while</span> (mm % prime[i] == <span class="number">0</span>) &#123;</span><br><span class="line">			ind[prime[i]]++;</span><br><span class="line">			mm /= prime[i];</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span> (mm != <span class="number">1</span>) &#123;</span><br><span class="line">		ind[mm]++;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">long</span> <span class="keyword">long</span> i = <span class="number">1</span>; <span class="built_in">sqrt</span>(m) &gt;= prime[i]; i++) &#123;</span><br><span class="line">		<span class="keyword">if</span> (ind[prime[i]]) &#123;</span><br><span class="line">			cnt[prime[i]] = getcnt(prime[i], n);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span> (mm != <span class="number">1</span>) &#123;</span><br><span class="line">		cnt[mm] = getcnt(mm, n);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">long</span> <span class="keyword">long</span> ans = <span class="number">1e18</span> + <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">auto</span> i = <span class="number">1</span>; <span class="built_in">sqrt</span>(m) &gt;= prime[i]; i++) &#123;</span><br><span class="line">		<span class="keyword">if</span> (ind[prime[i]]) &#123;</span><br><span class="line">			ans = min(ans, <span class="number">1L</span>L * cnt[prime[i]] / ind[prime[i]]);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span> (mm != <span class="number">1</span>) &#123;</span><br><span class="line">		ans = min(ans, <span class="number">1L</span>L * cnt[mm] / ind[mm]);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; ans &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
     </div>
     
@@ -437,388 +434,38 @@
 
     <footer class="post-footer">
       
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/题解/POJ1845/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Lmyy0862">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="http://img3.100bt.com/upload/ttq/20130217/1361104017329.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/题解/POJ1845/" itemprop="url">POJ1845</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-01-26T18:58:29+08:00">
-                2019-01-26
-              </time>
-            
-
-            
-
-            
-          </span>
-
+        <div class="post-tags">
           
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/题解/" itemprop="url" rel="index">
-                    <span itemprop="name">题解</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
+            <a href="/tags/Codeforces/" rel="tag"><i class="fa fa-tag"></i> Codeforces</a>
           
-
+            <a href="/tags/数学/" rel="tag"><i class="fa fa-tag"></i> 数学</a>
           
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/题解/POJ1845/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/题解/POJ1845/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  572
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  3
-                </span>
-              
-            </div>
-          
-
-          
-
         </div>
-      </header>
-    
+      
 
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
+      
       
       
 
       
-        
-          <h2 id="POJ1845"><a href="#POJ1845" class="headerlink" title="POJ1845"></a>POJ1845</h2>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/题解/POJ1845/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/题解/POJ1845/" rel="next" title="POJ1845">
+                <i class="fa fa-chevron-left"></i> POJ1845
+              </a>
+            
           </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
 
-    
+          <span class="post-nav-divider"></span>
 
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/题解/Codeforces-Round-533-Div-2/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Lmyy0862">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="http://img3.100bt.com/upload/ttq/20130217/1361104017329.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/题解/Codeforces-Round-533-Div-2/" itemprop="url">Codeforces Round &#35;533 (Div. 2)</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
+          <div class="post-nav-prev post-nav-item">
             
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-01-21T22:24:15+08:00">
-                2019-01-21
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/题解/" itemprop="url" rel="index">
-                    <span itemprop="name">题解</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/题解/Codeforces-Round-533-Div-2/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/题解/Codeforces-Round-533-Div-2/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  631
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  3
-                </span>
-              
-            </div>
-          
-
-          
-
+          </div>
         </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
       
 
       
-        
-          <h2 id="Codeforces-Round-533-Div-2-C-D题"><a href="#Codeforces-Round-533-Div-2-C-D题" class="headerlink" title="Codeforces Round #533 (Div. 2) C,D题"></a>Codeforces Round #533 (Div. 2) C,D题</h2>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/题解/Codeforces-Round-533-Div-2/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
       
     </footer>
   </div>
@@ -828,197 +475,11 @@
   </article>
 
 
-    
-      
 
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/题解/Codeforces-Round-531-Div-3/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Lmyy0862">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="http://img3.100bt.com/upload/ttq/20130217/1361104017329.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/题解/Codeforces-Round-531-Div-3/" itemprop="url">Codeforces Round &#35;531 (Div. 3)</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-01-14T17:48:40+08:00">
-                2019-01-14
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/题解/" itemprop="url" rel="index">
-                    <span itemprop="name">题解</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/题解/Codeforces-Round-531-Div-3/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/题解/Codeforces-Round-531-Div-3/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  346
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  1
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="Codeforces-Round-531-Div-3-D题"><a href="#Codeforces-Round-531-Div-3-D题" class="headerlink" title="Codeforces Round #531 (Div. 3) D题"></a>Codeforces Round #531 (Div. 3) D题</h2>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/题解/Codeforces-Round-531-Div-3/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
+    <div class="post-spread">
       
     </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
   </div>
-  
-  
-  
-  </article>
-
-
-    
-  </section>
-
-  
 
 
           </div>
@@ -1026,6 +487,13 @@
 
 
           
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
 
         </div>
         
@@ -1048,8 +516,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -1127,6 +604,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Codeforces-Round-538-Div-2-C"><span class="nav-number">1.</span> <span class="nav-text">Codeforces Round #538 (Div. 2) C</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
         <div id="music163player">
 <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=421137682&auto=1&height=66"></iframe>
@@ -1267,6 +760,10 @@
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
